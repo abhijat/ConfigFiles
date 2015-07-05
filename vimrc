@@ -103,4 +103,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-hi MatchParen cterm=bold ctermfg=black
+" C abbreviations:
+ab inmi int main(int argc, char* argv[])
+ab stio #include <stdio.h>
+ab strr #include <string.h>
+
+set laststatus=2
