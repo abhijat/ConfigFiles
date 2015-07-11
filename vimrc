@@ -96,7 +96,6 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
-colorscheme zellner
 set background=dark
 
 set tabstop=4
@@ -109,3 +108,6 @@ ab stio #include <stdio.h>
 ab strr #include <string.h>
 
 set laststatus=2
+highlight MatchParen cterm=underline ctermfg=black ctermbg=blue
+
+colorscheme zellner
