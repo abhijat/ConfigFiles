@@ -1,0 +1,6 @@
+{
+    "BasedOnStyle": "WebKit",
+    "BreakBeforeBraces": "Linux",
+    "format_on_save": true,
+    "IncludeBlocks": "IBS_Preserve",
+}
