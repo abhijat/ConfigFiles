@@ -97,8 +97,6 @@ set laststatus=2
 
 set completeopt-=preview
 
-let g:clang_format#command = "clang-format-6.0"
-
 let g:clang_format#code_style = "WebKit"
 
 let g:clang_format#style_options = {
@@ -110,15 +108,10 @@ let g:clang_format#style_options = {
             \"Cpp11BracedListStyle": "true",
             \"FixNamespaceComments": "true"}
 
-let g:clang_format#extra_args = ""
-
 let g:clang_format#auto_format = 1
-
-autocmd FileType c ClangFormatAutoEnable
 
 set cino+=N-s
 set cino+=g0
 
 let g:ycm_key_list_select_completion = []
 let g:UltiSnipsExpandTrigger="<tab>"
-
