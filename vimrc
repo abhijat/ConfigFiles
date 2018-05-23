@@ -1,24 +1,18 @@
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2015 Mar 24
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
-
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
 
-" allow backspacing over everything in insert mode
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rhysd/vim-clang-format'
+
+call vundle#end()
+
+filetype plugin indent on
+
+set nocompatible
 set backspace=indent,eol,start
 
 set nobackup		" do not keep a backup file, use versions instead
@@ -27,10 +21,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
-
-" Don't use Ex mode, use Q for formatting
 map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
@@ -96,18 +86,30 @@ if has('langmap') && exists('+langnoremap')
   set langnoremap
 endif
 
-set background=dark
-
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" C abbreviations:
-ab inmi int main(int argc, char* argv[])
-ab stio #include <stdio.h>
-ab strr #include <string.h>
-
 set laststatus=2
-highlight MatchParen cterm=underline ctermfg=black ctermbg=blue
 
-colorscheme zellner
+set completeopt-=preview
+
+" Might need to point this to the right clang-format command, comment out for
+" now
+" let g:clang_format#command = "clang-format-6.0"
+
+let g:clang_format#code_style = "WebKit"
+
+let g:clang_format#style_options = {
+            \"Standard": "C++11", 
+            \"BreakBeforeBraces": "Linux", 
+            \"NamespaceIndentation": "None",
+            \"IncludeBlocks": "Preserve",
+            \"AlignTrailingComments": "true",
+            \"Cpp11BracedListStyle": "true",
+            \"FixNamespaceComments": "true"}
+
+let g:clang_format#auto_format = 1
+
+set cino+=N-s
+set cino+=g0
